@@ -3,11 +3,14 @@ import { Link, NavLink } from "react-router-dom"
 
 export default function Header() {
     return (
-        <div className="header">
+        <header>
             <Link to="/">Lodgify</Link>
             <nav>
-                
+                <NavLink to="host">Host</NavLink>
+                <NavLink to="about">About</NavLink>
+                <NavLink to="rentals">Rentals</NavLink>
+                <Link to="login">Login</Link>
             </nav>
-        </div>
+        </header>
     )
 }
