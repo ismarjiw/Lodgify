@@ -9,10 +9,11 @@ import {
 import Layout from "./components/Layout"
 import Home from "./pages/Home"
 import About from "./pages/About"
-// import Rentals, { loader as rentalsLoader } from "./pages/Rentals/Rentals"
-// import Error from "./components/Error"
+import Rentals from "./pages/Rentals/Rentals"
+import Error from "./components/Error"
 import HostLayout from "./pages/Host/HostLayout"
 import Dashboard from "./pages/Host/Dashboard"
+import Login, { loader as loginLoader, action as loginAction } from "./Login"
 
 import NotFound from "./pages/NotFound"
 
@@ -20,7 +21,18 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout />}>
     <Route index element={<Home />} />
     <Route path="about" element={<About />} />
-    
+    <Route 
+    path="rentals" 
+    element={<Rentals />} 
+    errorElement={<Error />}
+    />
+    <Route 
+    path="login" 
+    element={<Login />}
+    loader={loginLoader}
+    action={loginAction} 
+    />
+
     <Route path="host" element={<HostLayout />}>
       <Route
         index element={<Dashboard />} 
@@ -31,7 +43,6 @@ const router = createBrowserRouter(createRoutesFromElements(
     </Route>
 ))
 
-// eslint-disable-next-line react-refresh/only-export-components
 function App() {
   return (
     <RouterProvider router={router} />
